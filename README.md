@@ -16,21 +16,38 @@ Remote access is a command line interface that enables accessing other devices i
 #### Steps
 
 - Clone repo
-- run app.py (But specify the ip that was granted by your router to access the server externally)
+- change the host host in [flask.py](https://github.com/Moody0101/RemoteAccess/blob/main/src/Flask_/app.py) to the ip that was granted by your router.
 
-to get this ip you should type
-
-```bash
-ipconfig
+to get this ip you should type in windows:
+```cmd
+C:\Users> ipconfig
 ```
-
-then something like this
+in linux:
+```bash
+moody@DESKTOP-Q65T2QS:/mnt/c$ ip a | grep 192.168
+```
+something like this will pop up
 
 ![IPV4](./img/IPV4.jpg)
 
+when you find it change this line:
+
 ```python
-app.run(host="<ip that you found>")
+app.run(host="192.168.137.1")
 ```
+
+before connecting from the other device using this script [phoneClient.py](https://github.com/Moody0101/RemoteAccess/blob/main/src/client/phoneClient.py), run  the socket server using [server.py](https://github.com/Moody0101/RemoteAccess/blob/main/src/server/server.py) then ping the ipv4 you found (which is for me is 192.168.137.1) and change the ip var in 
+[phoneClient.py](https://github.com/Moody0101/RemoteAccess/blob/main/src/client/phoneClient.py)
+to the one you found.
+```python
+ip = "192.168.137.1" #in my case it would be.
+```
+
+run [phoneClient.py](https://github.com/Moody0101/RemoteAccess/blob/main/src/client/phoneClient.py) from your other device.
+
+Now you can execute commands remotely.
+
+> You should be connected to the same network you dummy
 
 
 
