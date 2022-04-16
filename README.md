@@ -30,13 +30,13 @@ something like this will pop up
 
 ![IPV4](./img/IPV4.jpg)
 
-when you find it change this line:
+when you find it change this line in [flask.py](https://github.com/Moody0101/RemoteAccess/blob/main/src/Flask_/app.py):
 
 ```python
 app.run(host="192.168.137.1")
 ```
 
-before connecting from the other device using this script [phoneClient.py](https://github.com/Moody0101/RemoteAccess/blob/main/src/client/phoneClient.py), run  the socket server using [server.py](https://github.com/Moody0101/RemoteAccess/blob/main/src/server/server.py) then ping the ipv4 you found (which is for me is 192.168.137.1) and change the ip var in 
+before connecting from the other device using this script [phoneClient.py](https://github.com/Moody0101/RemoteAccess/blob/main/src/client/phoneClient.py), run  the socket server using [server.py](https://github.com/Moody0101/RemoteAccess/blob/main/src/server/server.py) change the ip var in 
 [phoneClient.py](https://github.com/Moody0101/RemoteAccess/blob/main/src/client/phoneClient.py)
 to the one you found.
 ```python
