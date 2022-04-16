@@ -1,10 +1,21 @@
+"""
+This api is acting as a middleware, phone sends http requests and the api 
+forwards them to the host that is resposible of executing the commands
+and returning the command's output then it gets forwarded again to phone as
+json, in the client (which most of the time is Termux), it loads and decodes the
+response.
+then prints it.
+
+[CLIENT] =|POST req|====> [FLASK] =|COMMAND|===> [SOCKET SERVER]
+
+"""
+
 from flask import Flask, request
 import socket
 import threading
 app = Flask(__name__)
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# sock.settimeout(5)
 PORT: int = 4000
 host = socket.gethostname()
 sock.connect((host, PORT))

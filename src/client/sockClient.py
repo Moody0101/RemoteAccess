@@ -37,10 +37,12 @@ class Client:
 		while run:
 			MSG = input(f"Send msg {socket.gethostname()}@{self.SERVER}: ")
 			if len(MSG) == "": MSG = " "
+			
 			MSG = {
 				"msg": MSG,
 				"name": self.USERNAME
 			}
+
 			self.send(dumps(MSG))
 			self.receiveMessage()
 
